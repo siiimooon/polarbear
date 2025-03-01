@@ -2,10 +2,11 @@ package discovery
 
 import (
 	"fmt"
-	"github.com/siiimooon/bluetooth"
 	"strings"
 	"sync"
 	"time"
+
+	"tinygo.org/x/bluetooth"
 )
 
 func New(uuid string) (*bluetooth.Device, error) {
@@ -27,7 +28,7 @@ func New(uuid string) (*bluetooth.Device, error) {
 		return nil, fmt.Errorf("failed to connect to H10: %w", err)
 	}
 
-	return device, nil
+	return &device, nil
 }
 
 func Scan(duration time.Duration) ([]string, error) {
